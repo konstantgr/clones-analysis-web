@@ -73,7 +73,7 @@ def app():
     data_scripts = []
     data_notebooks = []
 
-    for name in tqdm(scripts_files[30:]):
+    for name in tqdm(scripts_files[:]):
         data_scripts = get_clones_data(name, data_scripts)
 
     for name in tqdm(notebooks_files[:]):
