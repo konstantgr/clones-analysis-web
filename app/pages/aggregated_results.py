@@ -6,6 +6,7 @@ import numpy as np
 import json
 from os import listdir
 from os.path import isfile, join
+import os
 
 from .results_processing import get_results, pos2code, trim_clone
 
@@ -59,10 +60,10 @@ def plot_data(fig, ax, data, label, color1='k', color2='r', log=False):
 
 def app():
     # Get directories of results and code sources
-    default_value = '/Users/konstantingrotov/Documents/Programming/projects/clone-analysis-web/data/scripts'
+    default_value = os.path.abspath("data/notebooks")
     notebook_results_directory = st.text_input('Absolute path to directory with notebooks results', value=default_value)
 
-    default_value = '/Users/konstantingrotov/Documents/Programming/projects/clone-analysis-web/data/notebooks'
+    default_value = os.path.abspath("data/scripts")
     scripts_results_directory = st.text_input('Absolute path to directory with scripts results', value=default_value)
 
     notebooks_files = get_files(notebook_results_directory)
@@ -96,6 +97,7 @@ def app():
     fig, ax = plt.subplots()
 
     ax.scatter(range(1, 50, 2), n_means / s_means, color='r')
+    ax.axhline(1, color='k', linestyle='--')
 
     ax.set_xlabel('minCloneLength')
     ax.set_ylabel("ntb_value / scr_value")

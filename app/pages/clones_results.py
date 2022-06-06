@@ -10,10 +10,12 @@ def get_code(path):
 
 def app():
     # Get directories of results and code sources
-    default_value = '/Users/konstantingrotov/Documents/Programming/tools/clones-analysis/validation_anon/not_anon'
+    # default_value = '/Users/konstantingrotov/Documents/Programming/tools/clones-analysis/validation_anon/not_anon'
+    default_value = os.path.abspath("data/results_data/results")
     results_directory = st.text_input('Absolute path to directory with results', value=default_value)
 
-    default_value = '/Users/konstantingrotov/Documents/Programming/datasets/Lupa-duplicates/data/test_on_anon'
+    # default_value = '/Users/konstantingrotov/Documents/Programming/datasets/Lupa-duplicates/data/test_on_anon'
+    default_value = os.path.abspath("data/results_data/sources")
     sources_directory = st.text_input('Absolute path to directory with source codes', value=default_value)
 
     # Get all results
